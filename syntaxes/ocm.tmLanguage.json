@@ -1,0 +1,38 @@
+{
+    "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+    "name": "OCM",
+    "patterns": [
+        {
+            "include": "#keywords"
+        },
+        {
+            "include": "#strings"
+        }
+    ],
+    "repository": {
+        "keywords": {
+            "patterns": [
+                {
+                    "name": "support.function.ocm",
+                    "match": "\\b(ocm)\\b"
+                },
+                {
+                    "name": "keyword.control.ocm",
+                    "match": "\\b(account|cluster|completion|config|delete|get|login|logout|patch|post|token|version|whoami)\\b"
+                }
+            ]
+        },
+        "strings": {
+            "name": "string.quoted.double.ocm",
+            "begin": "\"",
+            "end": "\"",
+            "patterns": [
+                {
+                    "name": "constant.character.escape.ocm",
+                    "match": "\\\\."
+                }
+            ]
+        }
+    },
+    "scopeName": "source.ocm"
+}

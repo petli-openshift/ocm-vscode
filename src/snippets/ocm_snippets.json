@@ -1,0 +1,39 @@
+{
+    "login": {
+        "body": [
+            "ocm login \\",
+            "--token=$1 \\",
+            "--url=${2:https://api.openshift.com}"
+        ],
+        "description": "get token at https://cloud.redhat.com/openshift/token"
+    },
+    "subscribe an OCP cluster": {
+        "body": [
+            "ocm patch /api/accounts_mgmt/v1/subscriptions/${1:id} << EOF",
+            "{",
+            "  \"support_level\": \"${2|Standard,Premium,Self-Support|}\",",
+            "  \"service_level\": \"${3|L1-L3,L3-only|}\",",
+            "  \"usage\": \"${4|Production,Development/Test,Disaster Recovery|}\",",
+            "  \"system_units\": \"${5|Cores/vCPU,Sockets|}\"",
+            "}",
+            "EOF"
+        ],
+        "description": "subscribe and receive support for your OCP cluster"
+    },
+    "access review": {
+        "body": [
+            "ocm post /api/authorizations/v1/access_review << EOF",
+            "{",
+            "  \"account_username\": \"${1}\",",
+            "  \"action\": \"${2|get,list,create,delete,update|}\",",
+            "  \"resource_type\": \"${3|AddOn,Flavour,Account,AccountPool,Cluster,Plan,Subscription,Organization,Role,Permission,RoleBinding,Registry,RegistryCredential,CurrentAccount,AccessReview,SelfAcccessReview,ResourceReview,SelfResourceReview,ClusterRegistration,AccessToken,ClusterAuthorization,SelfManagedCluster,RedhatManagedCluster,ExportControlReview,ClusterLog,ClusterCredential,ClusterMetric,ResourceQuota,ReservedResource,Dashboard,ClusterProviderAndRegion,ServiceLog,InternalServiceLog,CSLogs,QuotaSummary,SubscriptionLabel,OrganizationLabel,SubscriptionLabelInternal,SelfAccessReview,SubscriptionInternal|}\",",
+            "  \"cluster_id\": \"${4}\",",
+            "  \"cluster_uuid\": \"${5}\",",
+            "  \"subscription_id\": \"${6}\",",
+            "  \"organization_id\": \"${7}\"",
+            "}",
+            "EOF"
+        ],
+        "description": "subscribe and receive support for your OCP cluster"
+    }
+}
