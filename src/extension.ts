@@ -4,7 +4,7 @@ import * as vscode from 'vscode';
 
 import { initService } from './services';
 import { openocm, sendRequest, addGateway, removeGateway, setActiveGateway } from './commands';
-import { ocmSnippets } from './snippets';
+import { ocmSnippets, readSnippets } from './snippets';
 import { RootCodeLensProvider } from './codeLens';
 import { initView } from './views';
 
@@ -38,6 +38,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 		// snippets
 		vscode.languages.registerCompletionItemProvider(selectors, ocmSnippets),
+		vscode.languages.registerCompletionItemProvider(selectors, readSnippets),
 
 		// codeLens
 		vscode.languages.registerCodeLensProvider(selectors, new RootCodeLensProvider()),

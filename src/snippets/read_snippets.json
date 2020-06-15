@@ -1,0 +1,166 @@
+{
+    "accounts": {
+        "services": ["/api/accounts_mgmt/v1/"],
+        "description": "Returns a list of accounts"
+    },
+    "accounts/{id}": {
+        "services": ["/api/accounts_mgmt/v1/"],
+        "description": "Get an account by id"
+    },
+    "accounts/{id}/labels": {
+        "services": ["/api/accounts_mgmt/v1/"],
+        "description": "Returns a list of labels"
+    },
+    "accounts/{id}/labels/{key}": {
+        "services": ["/api/accounts_mgmt/v1/"],
+        "description": "Get subscription labels by label key"
+    },
+    "current_account": {
+        "services": ["/api/accounts_mgmt/v1/"],
+        "description": "Get the authenticated account"
+    },
+    "errors": {
+        "services": ["/api/accounts_mgmt/v1/"],
+        "description": "Returns a list of errors"
+    },
+    "errors/{id}": {
+        "services": ["/api/accounts_mgmt/v1/"],
+        "description": "Get an error by id"
+    },
+    "labels": {
+        "services": ["/api/accounts_mgmt/v1/"],
+        "description": "Returns a list of labels"
+    },
+    "organizations": {
+        "services": ["/api/accounts_mgmt/v1/"],
+        "description": "Returns a list of organizations"
+    },
+    "organizations/{id}": {
+        "services": ["/api/accounts_mgmt/v1/"],
+        "description": "Get an organization by id"
+    },
+    "organizations/{id}/labels": {
+        "services": ["/api/accounts_mgmt/v1/"],
+        "description": "Returns a list of labels"
+    },
+    "organizations/{id}/labels/{key}": {
+        "services": ["/api/accounts_mgmt/v1/"],
+        "description": "Get subscription labels by label key"
+    },
+    "organizations/{orgId}/quota_summary": {
+        "services": ["/api/accounts_mgmt/v1/"],
+        "description": "Returns a summary of resource quota"
+    },
+    "organizations/{orgId}/resource_quota": {
+        "services": ["/api/accounts_mgmt/v1/"],
+        "description": "Returns a list of resource quota objects"
+    },
+    "organizations/{orgId}/resource_quota/{quotaId}": {
+        "services": ["/api/accounts_mgmt/v1/"],
+        "description": "Get a resource quota by id"
+    },
+    "plans": {
+        "services": ["/api/accounts_mgmt/v1/"],
+        "description": "Get all plans"
+    },
+    "plans/{id}": {
+        "services": ["/api/accounts_mgmt/v1/"],
+        "description": "Get a plan by id"
+    },
+    "registries": {
+        "services": ["/api/accounts_mgmt/v1/"],
+        "description": "Returns a list of registries"
+    },
+    "registries/{id}": {
+        "services": ["/api/accounts_mgmt/v1/"],
+        "description": "Get an registry by id"
+    },
+    "registry_credentials": {
+        "services": ["/api/accounts_mgmt/v1/"],
+        "description": "Get all registry credentials"
+    },
+    "registry_credentials/{id}": {
+        "services": ["/api/accounts_mgmt/v1/"],
+        "description": "Get a registry credentials by id"
+    },
+    "reserved_resources": {
+        "services": ["/api/accounts_mgmt/v1/"],
+        "description": "Returns a list of reserved resources"
+    },
+    "resource_quota": {
+        "services": ["/api/accounts_mgmt/v1/"],
+        "description": "Returns a list of resource quota objects"
+    },
+    "role_bindings": {
+        "services": ["/api/accounts_mgmt/v1/"],
+        "description": "Returns a list of role bindings"
+    },
+    "role_bindings/{id}": {
+        "services": ["/api/accounts_mgmt/v1/"],
+        "description": "Get a role binding"
+    },
+    "roles": {
+        "services": ["/api/accounts_mgmt/v1/"],
+        "description": "Returns a list of roles"
+    },
+    "roles/{id}": {
+        "services": ["/api/accounts_mgmt/v1/"],
+        "description": "Get a role by id"
+    },
+    "skus": {
+        "services": ["/api/accounts_mgmt/v1/"],
+        "description": "Returns a list of OCM product SKUs"
+    },
+    "skus/{id}": {
+        "services": ["/api/accounts_mgmt/v1/"],
+        "description": "Get a sku by id"
+    },
+    "subscriptions": {
+        "services": ["/api/accounts_mgmt/v1/"],
+        "description": "Returns a list of subscriptions"
+    },
+    "subscriptions/{id}": {
+        "services": ["/api/accounts_mgmt/v1/"],
+        "description": "Get a subscription by id"
+    },
+    "subscriptions/{id}/labels": {
+        "services": ["/api/accounts_mgmt/v1/"],
+        "description": "Returns a list of labels"
+    },
+    "subscriptions/{id}/labels/{key}": {
+        "services": ["/api/accounts_mgmt/v1/"],
+        "description": "Get subscription labels by label key"
+    },
+    "subscriptions/{id}/reserved_resources": {
+        "services": ["/api/accounts_mgmt/v1/"],
+        "description": "Returns a list of reserved resources"
+    },
+    "subscriptions/{subId}/reserved_resources/{reservedResourceId}": {
+        "services": ["/api/accounts_mgmt/v1/"],
+        "description": "Get reserved resources by id"
+    },
+    "clusters": {
+        "services": ["/api/clusters_mgmt/v1/"],
+        "description": "Retrieves the list of clusters."
+    },
+    "clusters/{cluster_id}/metric_queries/alerts": {
+        "services": ["/api/clusters_mgmt/v1/"],
+        "description": "metrics alerts"
+    },
+    "clusters/{cluster_id}/metric_queries/cluster_operators": {
+        "services": ["/api/clusters_mgmt/v1/"],
+        "description": "metrics cluster_operators"
+    },
+    "clusters/{cluster_id}/metric_queries/nodes": {
+        "services": ["/api/clusters_mgmt/v1/"],
+        "description": "metrics nodes"
+    },
+    "clusters/{cluster_id}/metric_queries/cpu_total_by_node_roles_os": {
+        "services": ["/api/clusters_mgmt/v1/"],
+        "description": "metrics cpu_total_by_node_roles_os"
+    },
+    "clusters/{cluster_id}/metric_queries/socket_total_by_node_roles_os": {
+        "services": ["/api/clusters_mgmt/v1/"],
+        "description": "metrics socket_total_by_node_roles_os"
+    }
+}

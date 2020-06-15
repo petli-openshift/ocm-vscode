@@ -47,7 +47,10 @@ export function sendRequest(startLine: number) {
         }
 
         // append API response to the request.
-        ocm(cmdText).then((response) => {
+        vscode.window.withProgress({
+            location: vscode.ProgressLocation.Notification,
+            title: "sending request...",
+        }, (progress, token) => ocm(cmdText).then((response) => {
             if (vscode.window.activeTextEditor) {
                 vscode.window.activeTextEditor.edit((editBuilder: vscode.TextEditorEdit) => {
                     if (vscode.window.activeTextEditor) {
@@ -68,6 +71,6 @@ export function sendRequest(startLine: number) {
             }
         }, (err) => {
             vscode.window.showInformationMessage(err);
-        });
+        }));
     }
 }

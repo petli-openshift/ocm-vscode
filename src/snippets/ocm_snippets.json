@@ -7,6 +7,12 @@
         ],
         "description": "get token at https://cloud.redhat.com/openshift/token"
     },
+    "whoami": {
+        "body": [
+            "ocm whoami"
+        ],
+        "description": ""
+    },
     "subscribe an OCP cluster": {
         "body": [
             "ocm patch /api/accounts_mgmt/v1/subscriptions/${1:id} << EOF",
@@ -20,7 +26,7 @@
         ],
         "description": "subscribe and receive support for your OCP cluster"
     },
-    "access review": {
+    "access_review": {
         "body": [
             "ocm post /api/authorizations/v1/access_review << EOF",
             "{",
@@ -34,6 +40,13 @@
             "}",
             "EOF"
         ],
-        "description": "subscribe and receive support for your OCP cluster"
+        "description": "Review an account's access to perform an action on a particular resource or resource type"
+    },
+    "access_token": {
+        "body": [
+            "ocm post /api/accounts_mgmt/v1/access_token << EOF",
+            "EOF"
+        ],
+        "description": "access token from registries in docker format"
     }
 }
