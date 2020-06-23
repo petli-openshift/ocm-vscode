@@ -42,11 +42,49 @@
         ],
         "description": "Review an account's access to perform an action on a particular resource or resource type"
     },
+    "self_access_review": {
+        "body": [
+            "ocm post /api/authorizations/v1/self_access_review << EOF",
+            "{",
+            "  \"action\": \"${2|get,list,create,delete,update|}\",",
+            "  \"resource_type\": \"${3|AddOn,Flavour,Account,AccountPool,Cluster,Plan,Subscription,Organization,Role,Permission,RoleBinding,Registry,RegistryCredential,CurrentAccount,AccessReview,SelfAcccessReview,ResourceReview,SelfResourceReview,ClusterRegistration,AccessToken,ClusterAuthorization,SelfManagedCluster,RedhatManagedCluster,ExportControlReview,ClusterLog,ClusterCredential,ClusterMetric,ResourceQuota,ReservedResource,Dashboard,ClusterProviderAndRegion,ServiceLog,InternalServiceLog,CSLogs,QuotaSummary,SubscriptionLabel,OrganizationLabel,SubscriptionLabelInternal,SelfAccessReview,SubscriptionInternal|}\",",
+            "  \"cluster_id\": \"${4}\",",
+            "  \"cluster_uuid\": \"${5}\",",
+            "  \"subscription_id\": \"${6}\",",
+            "  \"organization_id\": \"${7}\"",
+            "}",
+            "EOF"
+        ],
+        "description": "Review your ability to perform an action on a particular resource or resource type"
+    },
     "access_token": {
         "body": [
             "ocm post /api/accounts_mgmt/v1/access_token << EOF",
             "EOF"
         ],
         "description": "access token from registries in docker format"
+    },
+    "resource_review": {
+        "body": [
+            "ocm post /api/authorizations/v1/resource_review << EOF",
+            "{",
+            "  \"account_username\": \"${1}\",",
+            "  \"action\": \"${2|get,create,update,delete|}\",",
+            "  \"resource_type\": \"${3|AccessReview,AccessToken,Account,AccountPool,Cluster,CapabilityReviewCurrentAccount,ClusterRegistration,ClusterAuthorization,TokenAuthorization,ClusterLog,ClusterCredential,ClusterMetric,ClusterProviderAndRegion,CSLogs,Dashboard,OrganizationDashboard,ExportControlReview,Organization,Plan,Permission,QuotaSummary,RoleBinding,Registry,RegistryCredential,ResourceReview,Role,RedhatManagedCluster,ReservedResource,ResourceQuota,SubscriptionLabel,SubscriptionLabelInternal,OrganizationLabel,OrganizationLabelInternal,AccountLabel,AccountLabelInternal,Label,LabelInternal,SelfAccessReview,SelfResourceReview,SelfCapabilityReview,Subscription,SubscriptionInternal,SelfManagedCluster,AddOn,Flavour,ServiceLog,InternalServiceLog,PullSecret,NotificationRequest,ClusterDeploymentLabel,ClusterSyncSet|}\"",
+            "}",
+            "EOF"
+        ],
+        "description": "Obtain resource ids for resources an account may perform the specified action upon. Resource ids returned as [\"*\"] is shorthand for all ids."
+    },
+    "self_resource_review": {
+        "body": [
+            "ocm post /api/authorizations/v1/self_resource_review << EOF",
+            "{",
+            "  \"action\": \"${2|get,create,update,delete|}\",",
+            "  \"resource_type\": \"${3|AccessReview,AccessToken,Account,AccountPool,Cluster,CapabilityReviewCurrentAccount,ClusterRegistration,ClusterAuthorization,TokenAuthorization,ClusterLog,ClusterCredential,ClusterMetric,ClusterProviderAndRegion,CSLogs,Dashboard,OrganizationDashboard,ExportControlReview,Organization,Plan,Permission,QuotaSummary,RoleBinding,Registry,RegistryCredential,ResourceReview,Role,RedhatManagedCluster,ReservedResource,ResourceQuota,SubscriptionLabel,SubscriptionLabelInternal,OrganizationLabel,OrganizationLabelInternal,AccountLabel,AccountLabelInternal,Label,LabelInternal,SelfAccessReview,SelfResourceReview,SelfCapabilityReview,Subscription,SubscriptionInternal,SelfManagedCluster,AddOn,Flavour,ServiceLog,InternalServiceLog,PullSecret,NotificationRequest,ClusterDeploymentLabel,ClusterSyncSet|}\"",
+            "}",
+            "EOF"
+        ],
+        "description": "Obtain resource ids for resources you may perform the specified action upon. Resource ids returned as [\"*\"] is shorthand for all ids."
     }
 }
