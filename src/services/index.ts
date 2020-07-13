@@ -1,14 +1,22 @@
 import * as vscode from 'vscode';
 import { ocm } from './ocm';
 import { STATUS, initStatus } from './status';
-import { CONFIG, initConfig, replaceConfig } from './config';
+import { CONFIG, initConfig, replaceConfig, getConfig } from './config';
 
 let status: Promise<STATUS>;
 let config: CONFIG;
 
 function initService(context: vscode.ExtensionContext) {
     config = initConfig(context);
-    status = initStatus(context);
+    refreshStatus();
+}
+
+function refreshConfig() {
+    config = getConfig();
+}
+
+function refreshStatus() {
+    status = initStatus();
     status.then((s) => {
         if (s.isOcmInstalled && s.activeGateway) {
             if (!(s.activeGateway in config.gateways)) {
@@ -24,5 +32,7 @@ export {
     status,
     config,
     replaceConfig,
-    initService
+    initService,
+    refreshConfig,
+    refreshStatus
 };

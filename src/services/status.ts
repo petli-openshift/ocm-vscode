@@ -6,7 +6,7 @@ export interface STATUS {
     activeGateway: string;
 }
 
-export function initStatus(context: vscode.ExtensionContext): Promise<STATUS> {
+export function initStatus(): Promise<STATUS> {
     return new Promise<STATUS>((resolve) => {
         const config: STATUS = {
             isOcmInstalled: false,

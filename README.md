@@ -2,11 +2,11 @@
 
 This extension uses vscode editor to run ocm commands.
 
-###
+## Requirement
 
 Install [OCM](https://github.com/openshift-online/ocm-cli) as explained in the doc.
 
-### usage
+## Usage
 
 - Open a new file for running ocm commands (Ctrl+Shift+P).
 

@@ -16,6 +16,7 @@
 		"onCommand:ocm-vscode.newFile",
 		"onCommand:ocm-vscode.sendRequest",
 		"onCommand:ocm-vscode.addGateway",
+		"onCommand:ocm-vscode.refreshGateway",
 		"onLanguage:ocm",
 		"onView:ocmResources"
 	],
@@ -32,6 +33,12 @@
 				"command": "ocm-vscode.sendRequest",
 				"title": "Execute ocm command",
 				"category": "OCM"
+			},
+			{
+				"command": "ocm-vscode.refreshGateway",
+				"title": "Refresh gateway URLs",
+				"category": "OCM",
+				"icon": "$(refresh)"
 			},
 			{
 				"command": "ocm-vscode.addGateway",
@@ -103,6 +110,11 @@
 				}
 			],
 			"view/item/context": [
+				{
+					"command": "ocm-vscode.refreshGateway",
+					"when": "view == ocmResources && viewItem == gateway",
+					"group": "inline"
+				},
 				{
 					"command": "ocm-vscode.addGateway",
 					"when": "view == ocmResources && viewItem == gateway",

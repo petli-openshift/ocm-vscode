@@ -23,3 +23,12 @@ export function replaceConfig(cfg: CONFIG) {
     }
     _context.globalState.update(CONFIG_KEY, cfg);
 }
+
+export function getConfig(): CONFIG {
+    const emptyCfg = { gateways: {} };
+    if (!_context) {
+        return emptyCfg;
+    }
+    const cfg = <any>_context.globalState.get(CONFIG_KEY) || emptyCfg;
+    return cfg;
+}

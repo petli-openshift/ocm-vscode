@@ -3,7 +3,7 @@
 import * as vscode from 'vscode';
 
 import { initService } from './services';
-import { openocm, sendRequest, addGateway, removeGateway, setActiveGateway } from './commands';
+import { openocm, sendRequest, addGateway, removeGateway, setActiveGateway, refreshGateway } from './commands';
 import { ocmSnippets, readSnippets } from './snippets';
 import { RootCodeLensProvider } from './codeLens';
 import { initView } from './views';
@@ -35,6 +35,7 @@ export function activate(context: vscode.ExtensionContext) {
 		vscode.commands.registerCommand('ocm-vscode.addGateway', addGateway),
 		vscode.commands.registerCommand('ocm-vscode.removeGateway', removeGateway),
 		vscode.commands.registerCommand('ocm-vscode.setActiveGateway', setActiveGateway),
+		vscode.commands.registerCommand('ocm-vscode.refreshGateway', refreshGateway),
 
 		// snippets
 		vscode.languages.registerCompletionItemProvider(selectors, ocmSnippets),
