@@ -2,7 +2,7 @@
 	"name": "ocm-vscode",
 	"displayName": "ocm-vscode",
 	"description": "ocm extension for vscode",
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"engines": {
 		"vscode": "^1.45.0"
 	},
@@ -16,9 +16,10 @@
 		"onCommand:ocm-vscode.newFile",
 		"onCommand:ocm-vscode.sendRequest",
 		"onCommand:ocm-vscode.addGateway",
-		"onCommand:ocm-vscode.refreshGateway",
+		"onCommand:ocm-vscode.refreshAll",
 		"onLanguage:ocm",
-		"onView:ocmResources"
+		"onView:ocmResources",
+		"onCommand:ocm-vscode.addLogin"
 	],
 	"main": "./dist/extension.js",
 	"contributes": {
@@ -35,7 +36,7 @@
 				"category": "OCM"
 			},
 			{
-				"command": "ocm-vscode.refreshGateway",
+				"command": "ocm-vscode.refreshAll",
 				"title": "Refresh gateway URLs",
 				"category": "OCM",
 				"icon": "$(refresh)"
@@ -55,6 +56,23 @@
 			{
 				"command": "ocm-vscode.setActiveGateway",
 				"title": "Set the active gateway",
+				"category": "OCM"
+			},
+			{
+				"command": "ocm-vscode.addLogin",
+				"title": "Add the offline token of a user",
+				"category": "OCM",
+				"icon": "$(add)"
+			},
+			{
+				"command": "ocm-vscode.removeLogin",
+				"title": "Remove the login for the user",
+				"category": "OCM",
+				"icon": "$(trash)"
+			},
+			{
+				"command": "ocm-vscode.setActiveLogin",
+				"title": "Set the active login user",
 				"category": "OCM"
 			}
 		],
@@ -111,7 +129,7 @@
 			],
 			"view/item/context": [
 				{
-					"command": "ocm-vscode.refreshGateway",
+					"command": "ocm-vscode.refreshAll",
 					"when": "view == ocmResources && viewItem == gateway",
 					"group": "inline"
 				},
@@ -123,6 +141,16 @@
 				{
 					"command": "ocm-vscode.removeGateway",
 					"when": "view == ocmResources && viewItem == gatewayItem",
+					"group": "inline"
+				},
+				{
+					"command": "ocm-vscode.addLogin",
+					"when": "view == ocmResources && viewItem == login",
+					"group": "inline"
+				},
+				{
+					"command": "ocm-vscode.removeLogin",
+					"when": "view == ocmResources && viewItem == loginItem",
 					"group": "inline"
 				}
 			]

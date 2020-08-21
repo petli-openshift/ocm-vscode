@@ -18,9 +18,17 @@ function refreshConfig() {
 function refreshStatus() {
     status = initStatus();
     status.then((s) => {
-        if (s.isOcmInstalled && s.activeGateway) {
-            if (!(s.activeGateway in config.gateways)) {
+        if (s.isOcmInstalled) {
+            let configChanged = false;
+            if (s.activeGateway && !(s.activeGateway in config.gateways)) {
                 config.gateways[s.activeGateway] = true;
+                configChanged = true;
+            }
+            if (s.activeLogin && (!(s.activeLogin in config.logins) || config.logins[s.activeLogin] !== s.activeUser)) {
+                config.logins[s.activeLogin] = s.activeUser;
+                configChanged = true;
+            }
+            if (configChanged) {
                 replaceConfig(config);
             }
         }

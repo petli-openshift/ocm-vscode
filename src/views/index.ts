@@ -18,8 +18,15 @@ function refreshGateway() {
     }
 }
 
+function refreshLogin() {
+    if (_ocmResourcesProvider) {
+        _ocmResourcesProvider.refreshLogin();
+    }
+}
+
 export {
     initView,
     refreshGateway,
-    OcmResource
+    OcmResource,
+    refreshLogin
 };

@@ -3,7 +3,17 @@
 import * as vscode from 'vscode';
 
 import { initService } from './services';
-import { openocm, sendRequest, addGateway, removeGateway, setActiveGateway, refreshGateway } from './commands';
+import {
+	openocm,
+	sendRequest,
+	addGateway,
+	removeGateway,
+	setActiveGateway,
+	refreshAll,
+	addLogin,
+	removeLogin,
+	setActiveLogin,
+} from './commands';
 import { ocmSnippets, readSnippets } from './snippets';
 import { RootCodeLensProvider } from './codeLens';
 import { initView } from './views';
@@ -35,7 +45,10 @@ export function activate(context: vscode.ExtensionContext) {
 		vscode.commands.registerCommand('ocm-vscode.addGateway', addGateway),
 		vscode.commands.registerCommand('ocm-vscode.removeGateway', removeGateway),
 		vscode.commands.registerCommand('ocm-vscode.setActiveGateway', setActiveGateway),
-		vscode.commands.registerCommand('ocm-vscode.refreshGateway', refreshGateway),
+		vscode.commands.registerCommand('ocm-vscode.refreshAll', refreshAll),
+		vscode.commands.registerCommand('ocm-vscode.addLogin', addLogin),
+		vscode.commands.registerCommand('ocm-vscode.removeLogin', removeLogin),
+		vscode.commands.registerCommand('ocm-vscode.setActiveLogin', setActiveLogin),
 
 		// snippets
 		vscode.languages.registerCompletionItemProvider(selectors, ocmSnippets),

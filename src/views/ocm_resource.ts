@@ -3,6 +3,7 @@ import { config, status } from '../services';
 
 export class OcmResourcesProvider implements vscode.TreeDataProvider<OcmResource> {
     private gatewayRoot: OcmResource | undefined;
+    private loginRoot: OcmResource | undefined;
 
     constructor(private workspaceRoot: string) { }
 
@@ -20,6 +21,10 @@ export class OcmResourcesProvider implements vscode.TreeDataProvider<OcmResource
                     this.gatewayRoot = new OcmResource(vscode.TreeItemCollapsibleState.Expanded, 'gateway', 'gateway', 'gateway');
                 }
                 children.push(this.gatewayRoot);
+                if (!this.loginRoot) {
+                    this.loginRoot = new OcmResource(vscode.TreeItemCollapsibleState.Expanded, 'login', 'login', 'login');
+                }
+                children.push(this.loginRoot);
             }
         } else if (item.contextValue === 'gateway') {
             for (let gw of Object.keys(config.gateways)) {
@@ -27,6 +32,13 @@ export class OcmResourcesProvider implements vscode.TreeDataProvider<OcmResource
                 const gatewayItem = new OcmResource(vscode.TreeItemCollapsibleState.None, gw, label, 'gatewayItem');
                 gatewayItem.command = { title: 'Set active gateway', command: 'ocm-vscode.setActiveGateway', arguments: [gatewayItem] };
                 children.push(gatewayItem);
+            }
+        } else if (item.contextValue === 'login') {
+            for (let lg of Object.keys(config.logins)) {
+                const label = sts.activeLogin === lg ? '* ' + config.logins[lg] : config.logins[lg];
+                const loginItem = new OcmResource(vscode.TreeItemCollapsibleState.None, lg, label, 'loginItem');
+                loginItem.command = { title: 'Change login user', command: 'ocm-vscode.setActiveLogin', arguments: [loginItem] };
+                children.push(loginItem);
             }
         }
 
@@ -38,6 +50,10 @@ export class OcmResourcesProvider implements vscode.TreeDataProvider<OcmResource
 
     refreshGateway() {
         this._onDidChangeTreeData.fire(this.gatewayRoot);
+    }
+
+    refreshLogin() {
+        this._onDidChangeTreeData.fire(this.loginRoot);
     }
 }
 
@@ -62,6 +78,10 @@ export class OcmResource extends vscode.TreeItem {
         switch (this.name) {
             case 'gateway':
                 desc = 'click to switch API gateway';
+                break;
+            case 'login':
+                desc = 'click to switch login user';
+                break;
         }
         return desc;
     }

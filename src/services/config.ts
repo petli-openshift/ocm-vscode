@@ -6,6 +6,9 @@ const CONFIG_KEY = 'ocm.config';
 export interface CONFIG {
     gateways: {
         [key: string]: boolean;
+    },
+    logins: {
+        [key: string]: string;
     }
 };
 
@@ -13,8 +16,9 @@ let _context: vscode.ExtensionContext;
 
 export function initConfig(context: vscode.ExtensionContext): CONFIG {
     _context = context;
-    const cfg = <any>context.globalState.get(CONFIG_KEY) || { gateways: {} };
-    return cfg;
+    const emptyCfg = { gateways: {}, logins: {} };
+    const cfg = <any>context.globalState.get(CONFIG_KEY) || emptyCfg;
+    return {...emptyCfg, ...cfg};
 }
 
 export function replaceConfig(cfg: CONFIG) {
@@ -25,10 +29,10 @@ export function replaceConfig(cfg: CONFIG) {
 }
 
 export function getConfig(): CONFIG {
-    const emptyCfg = { gateways: {} };
+    const emptyCfg = { gateways: {}, logins: {} };
     if (!_context) {
         return emptyCfg;
     }
     const cfg = <any>_context.globalState.get(CONFIG_KEY) || emptyCfg;
-    return cfg;
+    return {...emptyCfg, ...cfg};
 }
