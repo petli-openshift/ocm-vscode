@@ -86,5 +86,70 @@
             "EOF"
         ],
         "description": "Obtain resource ids for resources you may perform the specified action upon. Resource ids returned as [\"*\"] is shorthand for all ids."
+    },
+    "capability.cluster.manage_cluster_admin": {
+        "body": [
+            "ocm post /api/accounts_mgmt/v1/${1|organizations,accounts,subscriptions|}/${2:id}/labels << EOF",
+            "{",
+            "  \"internal\": true,",
+            "  \"key\": \"capability.cluster.manage_cluster_admin\",",
+            "  \"type\": \"cluster\",",
+            "  \"value\": \"true\"",
+            "}",
+            "EOF"
+        ],
+        "description": "allows managing cluster_admin on the cluster"
+    },
+    "capability.organization.clusters_registrations_per_hour": {
+        "body": [
+            "ocm post /api/accounts_mgmt/v1/organizations/${1:id}/labels << EOF",
+            "{",
+            "  \"internal\": true,",
+            "  \"key\": \"capability.organization.clusters_registrations_per_hour\",",
+            "  \"type\": \"organization\",",
+            "  \"value\": \"${2:<limit number>}\"",
+            "}",
+            "EOF"
+        ],
+        "description": "max number of total clusters allowed to register for the organization per hour"
+    },
+    "capability.cluster.subscribed_ocp": {
+        "body": [
+            "ocm post /api/accounts_mgmt/v1/${1|organizations,accounts,subscriptions|}/${2:id}/labels << EOF",
+            "{",
+            "  \"internal\": true,",
+            "  \"key\": \"capability.cluster.subscribed_ocp\",",
+            "  \"type\": \"cluster\",",
+            "  \"value\": \"true\"",
+            "}",
+            "EOF"
+        ],
+        "description": "allows subscribing the cluster to RHSM"
+    },
+    "capability.account.enable_terms_enforcement": {
+        "body": [
+            "ocm post /api/accounts_mgmt/v1/${1|organizations,accounts|}/${2:id}/labels << EOF",
+            "{",
+            "  \"internal\": true,",
+            "  \"key\": \"capability.account.enable_terms_enforcement\",",
+            "  \"type\": \"account\",",
+            "  \"value\": \"${3|true,false|}\"",
+            "}",
+            "EOF"
+        ],
+        "description": "enable or disable the account for acknowledging terms and conditions"
+    },
+    "capability.account.create_moa_clusters": {
+        "body": [
+            "ocm post /api/accounts_mgmt/v1/${1|organizations,accounts|}/${2:id}/labels << EOF",
+            "{",
+            "  \"internal\": true,",
+            "  \"key\": \"capability.account.create_moa_clusters\",",
+            "  \"type\": \"account\",",
+            "  \"value\": \"true\"",
+            "}",
+            "EOF"
+        ],
+        "description": "allows the account to create MOA clusters"
     }
 }

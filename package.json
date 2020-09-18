@@ -2,7 +2,7 @@
 	"name": "ocm-vscode",
 	"displayName": "ocm-vscode",
 	"description": "ocm extension for vscode",
-	"version": "0.0.4",
+	"version": "0.0.6",
 	"engines": {
 		"vscode": "^1.45.0"
 	},
