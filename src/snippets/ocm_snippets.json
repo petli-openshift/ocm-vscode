@@ -151,5 +151,89 @@
             "EOF"
         ],
         "description": "allows the account to create MOA clusters"
+    },
+    "cluster_authorizations": {
+        "body": [
+            "ocm post /api/accounts_mgmt/v1/cluster_authorizations << EOF",
+            "{",
+            "  \"account_username\": \"${1}\",",
+            "  \"cluster_id\": \"${2}\",",
+            "  \"external_cluster_id\": \"${3}\",",
+            "  \"managed\": ${4|true,false|},",
+            "  \"byoc\": ${5|true,false|},",
+            "  \"availability_zone\": \"${6|any,single,multi|}\",",
+            "  \"product_id\": \"${7|any,OSD,OSDTrial,MOA,RHMI,OCP|}\",",
+            "  \"product_category\": \"${8|any,AssistedInstall|}\",",
+            "  \"display_name\": \"${9}\",",
+            "  \"disconnected\": ${10|false,true|},",
+            "  \"cloud_account_id\": \"${11}\",",
+            "  \"cloud_provider_id\": \"${12|any,aws,gcp,azure,vsphere,openstack,libvirt,baremetal|}\",",
+            "  \"reserve\": ${13|true,false|},",
+            "  \"resources\": [",
+            "  {",
+            "    \"resource_name\": \"${14|m5.xlarge,m5.2xlarge,m5.4xlarge,m5.8xlarge,m5.12xlarge,m5.16xlarge,m5.24xlarge,r5.xlarge,r5.2xlarge,r5.4xlarge,r5.8xlarge,r5.12xlarge,r5.16xlarge,r5.24xlarge,c5.2xlarge,c5.4xlarge,c5.9xlarge,c5.12xlarge,c5.18xlarge,c5.24xlarge,gp2,rpd,gp.small,gp.medium,gp.large,gp.xlarge,gp.xxlarge,gp.xxxlarge,gp.xxxxlarge,mem.small,mem.medium,mem.large,mem.xlarge,mem.xxlarge,mem.xxxlarge,mem.xxxxlarge,cpu.medium,cpu.large,cpu.xlarge,cpu.xxlarge,cpu.xxxlarge,cpu.xxxxlarge,network-gcp,storage-gcp,network-io-gcp,dbaOperatorAddon,addon-dba-operator,addon-prow-operator,addon-rhmi-operator,addon-crw-operator,addon-crw-operator-qe,addon-ocs-converged,addon-acm-operator,addon-elasticsearch-operator,addon-cluster-logging-operator,addon-managed-api-service,addon-managed-kafka,addon-open-data-hub,addon-ocs-dedicated,custom-4-16384,custom-8-32768,custom-16-65536,custom-32-131072,custom-48-196608,custom-64-262144,custom-96-393216,custom-4-32768-ext,custom-8-65536-ext,custom-16-131072-ext,custom-32-262144,custom-48-393216,custom-64-524288,custom-96-786432,custom-8-16384,custom-16-32768,custom-36-73728,custom-48-98304,custom-72-147456,custom-96-196608|}\",",
+            "    \"resource_type\": \"${15|cluster.aws,compute.node.aws,pv.storage.aws,network.io.aws,network.loadbalancer.aws,Manual,cluster.gcp,compute.node.gcp,pv.storage.gcp,network.io.gcp,network-gcp.loadbalancer.gcp,addon|}\",",
+            "    \"billing_model\": \"${16|standard,marketplace,any|}\",",
+            "    \"cluster\": ${17|true,false|},",
+            "    \"count\": ${18}",
+            "  }",
+            "  ]",
+            "}",
+            "EOF"
+        ]
+    },
+    "cluster_authorizations_resource": {
+        "body": [
+            "{",
+            "  \"resource_name\": \"${1|m5.xlarge,m5.2xlarge,m5.4xlarge,m5.8xlarge,m5.12xlarge,m5.16xlarge,m5.24xlarge,r5.xlarge,r5.2xlarge,r5.4xlarge,r5.8xlarge,r5.12xlarge,r5.16xlarge,r5.24xlarge,c5.2xlarge,c5.4xlarge,c5.9xlarge,c5.12xlarge,c5.18xlarge,c5.24xlarge,gp2,rpd,gp.small,gp.medium,gp.large,gp.xlarge,gp.xxlarge,gp.xxxlarge,gp.xxxxlarge,mem.small,mem.medium,mem.large,mem.xlarge,mem.xxlarge,mem.xxxlarge,mem.xxxxlarge,cpu.medium,cpu.large,cpu.xlarge,cpu.xxlarge,cpu.xxxlarge,cpu.xxxxlarge,network-gcp,storage-gcp,network-io-gcp,dbaOperatorAddon,addon-dba-operator,addon-prow-operator,addon-rhmi-operator,addon-crw-operator,addon-crw-operator-qe,addon-ocs-converged,addon-acm-operator,addon-elasticsearch-operator,addon-cluster-logging-operator,addon-managed-api-service,addon-managed-kafka,addon-open-data-hub,addon-ocs-dedicated,custom-4-16384,custom-8-32768,custom-16-65536,custom-32-131072,custom-48-196608,custom-64-262144,custom-96-393216,custom-4-32768-ext,custom-8-65536-ext,custom-16-131072-ext,custom-32-262144,custom-48-393216,custom-64-524288,custom-96-786432,custom-8-16384,custom-16-32768,custom-36-73728,custom-48-98304,custom-72-147456,custom-96-196608|}\",",
+            "  \"resource_type\": \"${2|cluster.aws,compute.node.aws,pv.storage.aws,network.io.aws,network.loadbalancer.aws,Manual,cluster.gcp,compute.node.gcp,pv.storage.gcp,network.io.gcp,network-gcp.loadbalancer.gcp,addon|}\",",
+            "  \"billing_model\": \"${3|standard,marketplace,any|}\",",
+            "  \"cluster\": ${4|true,false|},",
+            "  \"count\": ${5}",
+            "}"
+        ],
+        "description": "cluster authoriaztion resource"
+    },
+    "cluster_auth_MW00530": {
+        "body": [
+            "ocm post /api/accounts_mgmt/v1/cluster_authorizations << EOF",
+            "{",
+            "  \"account_username\": \"${1}\",",
+            "  \"cluster_id\": \"${2}\",",
+            "  \"external_cluster_id\": \"${3}\",",
+            "  \"managed\": true,",
+            "  \"byoc\": true,",
+            "  \"availability_zone\": \"single\",",
+            "  \"product_id\": \"OSD\",",
+            "  \"product_category\": \"\",",
+            "  \"display_name\": \"${4}\",",
+            "  \"disconnected\": false,",
+            "  \"cloud_account_id\": \"\",",
+            "  \"cloud_provider_id\": \"aws\",",
+            "  \"reserve\": true,",
+            "  \"resources\": [",
+            "  {",
+            "    \"resource_name\": \"m5.xlarge\",",
+            "    \"resource_type\": \"compute.node.aws\",",
+            "    \"billing_model\": \"standard\",",
+            "    \"cluster\": true,",
+            "    \"count\": ${5}",
+            "  }",
+            "  ]",
+            "}",
+            "EOF"
+        ]
+    },
+    "grant_quota_MW00530": {
+        "body": [
+            "ocm post /api/accounts_mgmt/v1/organizations/${1:orgId}/resource_quota << EOF",
+            "{",
+            "  \"sku\": \"MW00530\",",
+            "  \"sku_count\": ${2},",
+            "  \"type\": \"${3|Subscription,Config,Manual|}\"",
+            "}",
+            "EOF"
+        ],
+        "description": "aws byoc single"
     }
 }
