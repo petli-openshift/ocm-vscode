@@ -124,7 +124,20 @@
             "}",
             "EOF"
         ],
-        "description": "allows subscribing the cluster to RHSM"
+        "description": "allows editting subscription settings"
+    },
+    "capability.cluster.subscribed_ocp_marketplace": {
+        "body": [
+            "ocm post /api/accounts_mgmt/v1/${1|organizations,accounts,subscriptions|}/${2:id}/labels << EOF",
+            "{",
+            "  \"internal\": true,",
+            "  \"key\": \"capability.cluster.subscribed_ocp_marketplace\",",
+            "  \"type\": \"cluster\",",
+            "  \"value\": \"true\"",
+            "}",
+            "EOF"
+        ],
+        "description": "allows editting subscription settings using marketplace SKUs"
     },
     "capability.account.enable_terms_enforcement": {
         "body": [

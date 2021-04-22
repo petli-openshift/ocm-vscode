@@ -47,9 +47,10 @@
         "services": ["/api/accounts_mgmt/v1/"],
         "description": "Get subscription labels by label key"
     },
-    "organizations/{orgId}/quota_summary": {
+    "organizations/{orgId}/quota_cost": {
         "services": ["/api/accounts_mgmt/v1/"],
-        "description": "Returns a summary of resource quota"
+        "description": "Returns quota and related resource",
+        "parameters": ["fetchRelatedResources=true"]
     },
     "organizations/{orgId}/resource_quota": {
         "services": ["/api/accounts_mgmt/v1/"],

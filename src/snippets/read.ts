@@ -13,7 +13,11 @@ export const readSnippets = {
                 const completion = new vscode.CompletionItem(endpoint, vscode.CompletionItemKind.Enum);
                 let i = 1;
                 const ep = endpoint.replace(/{([^}]+)}/g, (_, m) => `\${${i++}:${m}}`);
-                completion.insertText = new vscode.SnippetString(`ocm get ${service}${ep}`);
+                let params = '';
+                if (data.parameters) {
+                    params = ' --parameter ' + data.parameters.join(' --parameter ');
+                }
+                completion.insertText = new vscode.SnippetString(`ocm get ${service}${ep}${params}`);
                 completion.documentation = new vscode.MarkdownString(data.description);
                 completions.push(completion);
             }

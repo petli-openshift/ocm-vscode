@@ -69,10 +69,12 @@ export class OcmResource extends vscode.TreeItem {
         this.contextValue = contextValue || 'ocmResource';
     }
 
+    // @ts-ignore
     get tooltip(): string {
         return this.label || this.name;
     }
 
+    // @ts-ignore
     get description(): string {
         let desc = '';
         switch (this.name) {
